@@ -1,237 +1,220 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Infografía - Prueba</title>
-  <style>
-    :root{
-      --bg:#0f1724; --card:#0b1220; --accent:#06b6d4; --muted:#9aa6b2; --glass: rgba(255,255,255,0.04);
-      --radius:16px; --maxw:1000px;
-      --paper:#fafafa; --ink:#07203a;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Infograf铆a Neumorfista: Desarrollo Tarjeta NVIDIA</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  body {
+    background: #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .infografia {
+    max-width: 900px;
+    background: #e0e0e0;
+    border-radius: 30px;
+    padding: 40px 50px;
+    box-shadow:
+      8px 8px 15px #bebebe,
+      -8px -8px 15px #ffffff;
+  }
+
+  h1 {
+    text-align: center;
+    color: #2a2a2a;
+    font-weight: 600;
+    font-size: 2.4rem;
+    margin-bottom: 5px;
+  }
+
+  h2 {
+    text-align: center;
+    color: #4a4a4a;
+    margin-top: 0;
+    margin-bottom: 40px;
+    font-weight: 500;
+  }
+
+  .stage {
+    background: #e0e0e0;
+    border-radius: 25px;
+    box-shadow:
+      inset 6px 6px 8px #bebebe,
+      inset -6px -6px 8px #ffffff;
+    padding: 25px 30px 30px 30px;
+    margin-bottom: 30px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .icon-container {
+    flex-shrink: 0;
+    width: 70px;
+    height: 70px;
+    background: #e0e0e0;
+    border-radius: 50%;
+    box-shadow:
+      6px 6px 8px #bebebe,
+      -6px -6px 8px #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: #0f9d58;
+    user-select: none;
+  }
+
+  .content {
+    flex-grow: 1;
+  }
+
+  h3 {
+    color: #0f9d58;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 1.4rem;
+  }
+
+  p {
+    margin: 6px 0;
+    color: #4a4a4a;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  ul {
+    margin: 6px 0 12px 20px;
+    color: #4a4a4a;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  strong {
+    color: #2a2a2a;
+  }
+
+  .reflection {
+    background: #e0e0e0;
+    border-radius: 30px;
+    box-shadow:
+      6px 6px 8px #bebebe,
+      -6px -6px 8px #ffffff;
+    padding: 25px 30px;
+    text-align: center;
+    font-style: italic;
+    color: #0f9d58;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-top: 50px;
+  }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .stage {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
-    *{box-sizing:border-box}
-    body{font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background: linear-gradient(180deg,#071022 0%, #071a2a 100%); color:var(--paper); -webkit-font-smoothing:antialiased}
-    .wrap{max-width:var(--maxw); margin:36px auto; padding:28px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:20px; box-shadow: 0 10px 30px rgba(2,6,23,0.6);}
-    header{display:flex; gap:20px; align-items:center}
-    .logo{width:88px; height:88px; border-radius:14px; background:linear-gradient(135deg,var(--accent),#7c3aed); display:grid; place-items:center; box-shadow:0 6px 18px rgba(6,182,212,0.12)}
-    .logo svg{width:44px; height:44px}
-    h1{font-size:24px; margin:0}
-    p.lead{margin:6px 0 0; color:var(--muted)}
-
-    .grid{display:grid; grid-template-columns: 1fr 340px; gap:22px; margin-top:22px}
-    .main{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:20px; border-radius:14px}
-    .side{padding:18px; border-radius:14px; background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));}
-
-    .section{display:flex; gap:14px; align-items:flex-start; margin-bottom:18px}
-    .icon{width:56px; height:56px; border-radius:12px; background:var(--glass); display:grid; place-items:center; flex:0 0 56px}
-    .icon svg{width:32px;height:32px; fill:none; stroke:var(--accent); stroke-width:1.6}
-    .content h3{margin:0 0 6px 0; font-size:16px}
-    .content p{margin:0; color:var(--muted); line-height:1.45}
-
-    .stats{display:flex; gap:12px; margin-top:8px}
-    .stat{flex:1; background:rgba(255,255,255,0.02); padding:12px; border-radius:10px; text-align:center}
-    .stat .n{font-size:20px; font-weight:700}
-    .stat .t{color:var(--muted); font-size:13px}
-
-    .progress{height:10px; background:rgba(255,255,255,0.03); border-radius:999px; overflow:hidden}
-    .progress > span{display:block; height:100%; background:linear-gradient(90deg,var(--accent), #7c3aed)}
-
-    .tag{display:inline-block; padding:6px 10px; background:rgba(255,255,255,0.02); border-radius:999px; font-size:12px; color:var(--muted)}
-
-    /* timeline */
-    .timeline{border-left:2px dashed rgba(255,255,255,0.03); padding-left:16px}
-    .event{position:relative; padding:12px 0}
-    .event::before{content:''; position:absolute; left:-12px; top:18px; width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 6px rgba(6,182,212,0.06)}
-    .event h4{margin:0 0 6px 0; font-size:14px}
-    .event p{margin:0; color:var(--muted); font-size:13px}
-
-    footer{margin-top:18px; text-align:center; color:var(--muted); font-size:13px}
-
-    /* responsive */
-    @media (max-width:880px){
-      .grid{grid-template-columns:1fr;}
-      .logo{width:64px;height:64px}
+    .icon-container {
+      margin-bottom: 15px;
     }
-
-    /* printable-friendly light mode (class .printable) */
-    .printable{background:#fff;color:#051428}
-    .printable .logo{background:var(--accent);}
-
-  </style>
+  }
+</style>
 </head>
 <body>
-  <div class="wrap" id="canvas">
-    <header>
-      <div class="logo" aria-hidden>
-        <!-- simple icon -->
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-          <rect x="3" y="3" width="18" height="18" rx="4" fill="white" opacity="0.06"></rect>
-          <path d="M6 15c1.5-3 4.5-4 6-4s4.5 1 6 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M12 7v3" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <div>
-        <h1>Infografía — Cómo publicar tu HTML en GitHub</h1>
-        <p class="lead">Guía rápida en 6 pasos con puntos clave y recursos — lista para probar.</p>
-      </div>
-    </header>
 
-    <div class="grid">
-      <main class="main">
-        <section class="section">
-          <div class="icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-              <path d="M3 7h18M6 11h12M10 15h4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="content">
-            <h3>Paso 1 — Prepara tus archivos</h3>
-            <p>Coloca <strong>index.html</strong> en la raíz. Si tienes CSS o JS, ponlos en carpetas <code>css/</code> y <code>js/</code>. Usa rutas relativas para que todo funcione tras subirlo.</p>
-          </div>
-        </section>
+<div class="infografia">
 
-        <section class="section">
-          <div class="icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-              <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="content">
-            <h3>Paso 2 — Crea el repositorio</h3>
-            <p>En GitHub: <em>New → repository</em>. Nombra el repo (por ejemplo <code>mi-sitio</code>) y súbelo. O usa <code>git init</code> local y luego <code>git push</code> al remoto.</p>
-          </div>
-        </section>
+  <h2>Desarrollo de una Tarjeta de Video NVIDIA</h2>
 
-        <section class="section">
-          <div class="icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-              <path d="M12 3v18M3 12h18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="content">
-            <h3>Paso 3 — Sube los archivos</h3>
-            <p>Usa "Upload files" en la web o desde la terminal: <code>git add .</code> → <code>git commit -m "Initial"</code> → <code>git push</code>.</p>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-              <path d="M4 12h16M12 4v16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="content">
-            <h3>Paso 4 — Activa GitHub Pages</h3>
-            <p>En Settings → Pages selecciona la rama <code>main</code> (o <code>gh-pages</code>) y la raíz <code>/ (root)</code>. Espera unos minutos y tu sitio estará disponible.</p>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-              <path d="M3 7h18v10H3zM7 11h10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="content">
-            <h3>Paso 5 — Verifica rutas y recursos</h3>
-            <p>Comprueba que las imágenes, tipografías y archivos estén con rutas relativas (<code>./img/logo.png</code>) y que no dependan de rutas del sistema local.</p>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-              <path d="M12 5v6l4 2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="content">
-            <h3>Paso 6 — Comparte la URL</h3>
-            <p>Tu URL será <code>https://TU-USUARIO.github.io/NOMBRE-DEL-REPO/</code>. Si el repo se llama <code>TU-USUARIO.github.io</code>, será la raíz del dominio.</p>
-          </div>
-        </section>
-
-        <div class="stats" style="margin-top:12px">
-          <div class="stat">
-            <div class="n">3–5 min</div>
-            <div class="t">Tiempo estimado</div>
-          </div>
-          <div class="stat">
-            <div class="n">index.html</div>
-            <div class="t">Archivo principal</div>
-          </div>
-          <div class="stat">
-            <div class="n">Rutas relativas</div>
-            <div class="t">Importante</div>
-          </div>
-        </div>
-
-      </main>
-
-      <aside class="side">
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:12px">
-          <div>
-            <strong>Atajos</strong>
-            <div style="color:var(--muted); font-size:13px">Comandos útiles</div>
-          </div>
-          <span class="tag">HTML estático</span>
-        </div>
-
-        <div style="margin-bottom:14px">
-          <div style="font-size:13px; color:var(--muted); margin-bottom:8px">Comandos Git</div>
-          <pre style="background:rgba(255,255,255,0.02); padding:10px; border-radius:8px; color:var(--paper); font-size:13px; overflow:auto">git init
-git add .
-git commit -m "Initial"
-git branch -M main
-git remote add origin https://github.com/TU-USUARIO/mi-sitio.git
-git push -u origin main</pre>
-        </div>
-
-        <div style="margin-bottom:14px">
-          <div style="font-size:13px; color:var(--muted); margin-bottom:8px">Verificación</div>
-          <div class="timeline">
-            <div class="event">
-              <h4>¿No aparece el sitio?</h4>
-              <p>Revisa que <code>index.html</code> esté en la raíz, y el branch correcto en Pages. A veces tarda unos minutos en desplegar.</p>
-            </div>
-            <div class="event">
-              <h4>Imágenes no cargan</h4>
-              <p>¿Tienes rutas absolutas? Cámbialas por relativas o súbelas al repo.</p>
-            </div>
-            <div class="event">
-              <h4>SPA (React, Vite)</h4>
-              <p>Requiere build y a veces <code>404.html</code> o configuración de base path.</p>
-            </div>
-          </div>
-        </div>
-
-        <div style="margin-top:6px">
-          <div style="font-size:13px; color:var(--muted); margin-bottom:8px">Consejos rápidos</div>
-          <ul style="margin:0; padding-left:18px; color:var(--muted); font-size:13px">
-            <li>Usa <strong>index.html</strong> como punto de entrada.</li>
-            <li>Evita rutas absolutas al disco.</li>
-            <li>Si usas frameworks, genera la carpeta <code>build/</code> o <code>dist/</code>.</li>
-          </ul>
-        </div>
-
-        <div style="margin-top:14px; display:flex; gap:8px; justify-content:center">
-          <button onclick="window.print()" style="padding:10px 12px; border-radius:10px; border:0; background:linear-gradient(90deg,var(--accent),#7c3aed); color:white; cursor:pointer">Imprimir</button>
-          <button onclick="toggleLight()" style="padding:10px 12px; border-radius:10px; border:0; background:transparent; color:var(--paper); border:1px solid rgba(255,255,255,0.04); cursor:pointer">Alternar modo</button>
-        </div>
-
-      </aside>
+  <div class="stage">
+    <div class="icon-container" aria-label="Inicio">馃殌</div>
+    <div class="content">
+      <h3>1. Inicio</h3>
+      <p><strong>Contexto:</strong> Definir necesidad y objetivos de la nueva tarjeta gr谩fica.</p>
+      <p><strong>Actividades:</strong></p>
+      <ul>
+        <li>Investigaci贸n de mercado y definici贸n de alcance.</li>
+      </ul>
+      <p><strong>Entregables:</strong> Documento de visi贸n y estudio de viabilidad.</p>
+      <p><strong>Responsable:</strong> Gerente de producto.</p>
+      <p><strong>Riesgos:</strong> Mala interpretaci贸n de demanda y presupuesto limitado.</p>
     </div>
-
-    <footer>
-      Plantilla de prueba • Puedes editar el texto y subir este archivo a GitHub para probar GitHub Pages.
-    </footer>
-
   </div>
 
-  <script>
-    function toggleLight(){
-      document.getElementById('canvas').classList.toggle('printable');
-    }
-  </script>
+  <div class="stage">
+    <div class="icon-container" aria-label="Planificaci贸n">馃搻</div>
+    <div class="content">
+      <h3>2. Planificaci贸n</h3>
+      <p><strong>Contexto:</strong> Dise帽o t茅cnico y planificaci贸n del desarrollo.</p>
+      <p><strong>Actividades:</strong></p>
+      <ul>
+        <li>Dise帽o de la arquitectura GPU, planificaci贸n de recursos y tiempos.</li>
+      </ul>
+      <p><strong>Entregables:</strong> Especificaciones t茅cnicas y cronograma.</p>
+      <p><strong>Responsable:</strong> Equipo de ingenier铆a y gerente de proyecto.</p>
+      <p><strong>Riesgos:</strong> Subestimaci贸n de costos y tiempos.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="icon-container" aria-label="Ejecuci贸n">馃敡</div>
+    <div class="content">
+      <h3>3. Ejecuci贸n</h3>
+      <p><strong>Contexto:</strong> Construcci贸n y prueba de prototipos.</p>
+      <p><strong>Actividades:</strong></p>
+      <ul>
+        <li>Fabricaci贸n, desarrollo de drivers y pruebas de rendimiento.</li>
+      </ul>
+      <p><strong>Entregables:</strong> Prototipos funcionales y software beta.</p>
+      <p><strong>Responsable:</strong> Ingenieros de hardware y software.</p>
+      <p><strong>Riesgos:</strong> Fallos t茅cnicos y retrasos en fabricaci贸n.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="icon-container" aria-label="Monitoreo y Control">馃搳</div>
+    <div class="content">
+      <h3>4. Monitoreo y Control</h3>
+      <p><strong>Contexto:</strong> Supervisi贸n del avance y calidad.</p>
+      <p><strong>Actividades:</strong></p>
+      <ul>
+        <li>Revisi贸n, control de calidad y ajustes.</li>
+      </ul>
+      <p><strong>Entregables:</strong> Informes de progreso y resultados de calidad.</p>
+      <p><strong>Responsable:</strong> Gerente de proyecto y equipo de calidad.</p>
+      <p><strong>Riesgos:</strong> Desviaciones y problemas no detectados.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="icon-container" aria-label="Cierre">鉁?/div>
+    <div class="content">
+      <h3>5. Cierre</h3>
+      <p><strong>Contexto:</strong> Finalizaci贸n y lanzamiento.</p>
+      <p><strong>Actividades:</strong></p>
+      <ul>
+        <li>Documentaci贸n, producci贸n masiva y capacitaci贸n.</li>
+      </ul>
+      <p><strong>Entregables:</strong> Producto final, manuales y estrategia de lanzamiento.</p>
+      <p><strong>Responsable:</strong> Gerente de producto, marketing y soporte.</p>
+      <p><strong>Riesgos:</strong> Problemas post-lanzamiento y mala recepci贸n.</p>
+    </div>
+  </div>
+
+  <div class="reflection">
+    Reflexi贸n Final: El desarrollo de una tarjeta NVIDIA requiere innovaci贸n, coordinaci贸n y control continuo para minimizar riesgos t茅cnicos y de mercado.
+  </div>
+</div>
+
 </body>
 </html>
